@@ -14,7 +14,11 @@ jobs:
       - run:
         # 作業ブランチをsourceに切り替え
           name: Checkout branch
-          command: tree . && git checkout source && tree .
+          command: git checkout source
+      - run:
+         command: hugo new post/test.md
+      - run:
+         command: echo "---\ntitle: 'Test'\ndate: 2019-10-29T06:13:01+09:00\ndraft: false\n---\n- [x] test" > content/post/test.md
       - run:
         # submoduleにしているテーマのアップデート
           name: Update theme
