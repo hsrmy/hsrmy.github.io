@@ -10,7 +10,7 @@ jobs:
       - run:
         # 環境を最新に
           name: Update enviroment
-          command: apt -y update && apt -y install git tree
+          command: apt-get -q -y update && apt-get -q -y install git tree
       - run:
         # 作業ブランチをsourceに切り替え
           name: Checkout branch
@@ -18,7 +18,8 @@ jobs:
       - run:
          command: hugo new post/test.md
       - run:
-         command: echo "---\ntitle: 'Test'\ndate: 2019-10-29T06:13:01+09:00\ndraft: false\n---\n- [x] test" > content/post/test.md
+         command: >-
+           echo '---\ntitle: "Test"\ndate: 2019-10-29T06:13:01+09:00\ndraft: false\n---\n- [x] test' > content/post/test.md
       - run:
         # submoduleにしているテーマのアップデート
           name: Update theme
