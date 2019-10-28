@@ -7,19 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>&amp;copy; 2019 hsrmy All rights reserved.</copyright>
-    <lastBuildDate>Tue, 29 Oct 2019 00:48:01 +0900</lastBuildDate>
     
 	<atom:link href="https://hsrmy.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Test</title>
-      <link>https://hsrmy.github.io/post/2019/10/10290048/</link>
-      <pubDate>Tue, 29 Oct 2019 00:48:01 +0900</pubDate>
-      
-      <guid>https://hsrmy.github.io/post/2019/10/10290048/</guid>
-      <description>Test  </description>
-    </item>
     
   </channel>
 </rss>
