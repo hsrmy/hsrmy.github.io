@@ -22,7 +22,7 @@ jobs:
       - run:
           # 記事の作成
           name: Create ariticle
-          command: HUGO_ENV=production hugo
+          command: hugo
       - run:
         # tmpフォルダにmasterブランチをclone
           name: Clone master into tmp
