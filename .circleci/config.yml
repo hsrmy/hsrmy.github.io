@@ -36,7 +36,11 @@ jobs:
           name: Copy public
           command: cp -fr public/* tmp/hsrmy.github.io/
       - run:
-          command: tree .
+          name: Setting git
+          command: git config --local user.name hsrmy && git config --local user.email hsrmy@emradc.xyz
+      - run:
+          name: Deploy
+          command: cd $(GITHUB_DIR)/ && git add . && git commit -m "publish" && git push origin test
 
                 # # sourceブランチにpushされた時実行
                 # workflows:
