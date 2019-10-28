@@ -1,0 +1,55 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cibuilds/hugo:latest
+    working_directory: ~/hugo
+    steps:
+      # working_directoryにリポジトリをコピー
+      - checkout
+      - run:
+        # 環境を最新に
+          name: Update enviroment
+          command: apt -y update && apt -y install git
+      - run:
+        # 作業ブランチをsourceに切り替え
+          name: Checkout branch
+          command: git checkout source
+      - run:
+        # submoduleにしているテーマのアップデート
+          name: Update theme
+          command: git submodule update -i
+      - run:
+          # 記事の作成
+          name: Create ariticle
+          command: hugo
+      - run:
+        # tmpフォルダにmasterブランチをclone
+          name: Clone master into tmp
+          command: mkdir -p tmp && cd tmp && git clone https://github.com/hsrmy/hsrmy.github.io.git
+      - run:
+        # 一旦tmp/hsrmy.github.ioの中身を削除
+          name: Clean tmp/hsrmy.github.io
+          command: rm -rf tmp/hsrmy.github.io/*
+      - run:
+        # publicの中身をtmp/hsrmy.github.ioの中にコピー
+          name: Copy public
+          command: cp -fr public/* tmp/hsrmy.github.io/
+      - run:
+        # Gitの設定
+          name: Setting git
+          command: git config --global user.name hsrmy && git config --global user.email hsrmy@emradc.xyz
+      - run:
+        # Githubに反映
+          name: Deploy
+          command: cd tmp/hsrmy.github.io/ &&  git add . && git commit -m "publish" && git push origin test
+
+                # # sourceブランチにpushされた時実行
+                # workflows:
+                #   version: 2
+                #   deploy:
+                #     jobs:
+                #       - deploy_job:
+                #         filters:
+                #           branches:
+                #             only: source
