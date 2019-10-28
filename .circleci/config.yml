@@ -29,7 +29,7 @@ jobs:
       - run:
         # tmpフォルダにmasterブランチをclone
           name: Clone master into tmp
-          command: mkdir -p tmp && cd tmp && git clone https://github.com/hsrmy/hsrmy.github.io.git
+          command: mkdir -p tmp && cd tmp && git clone git@github.com:hsrmy/hsrmy.github.io.git
       - run:
         # 一旦tmp/hsrmy.github.ioの中身を削除
           name: Clean tmp/hsrmy.github.io
