@@ -10,17 +10,33 @@ jobs:
       - run:
         # 環境を最新に
           name: Update enviroment
-          command: apt -y update && apt -y install git
+          command: apt -y update && apt -y upgrade && apt -y install git tree
       - run:
         # 作業ブランチをsourceに切り替え
           name: Checkout branch
           command: git checkout source
       - run:
-          name: clone master into tmp
+        # submoduleにしているテーマのアップデート
+        name: Update theme
+        command: git submodule update -i
+      - run:
+          # 記事の作成
+          name: Create ariticle
+          command: HUGO_ENV=production hugo
+      - run:
+        # tmpフォルダにmasterブランチをclone
+          name: Clone master into tmp
           command: mkdir -p tmp && cd tmp && git clone https://github.com/hsrmy/hsrmy.github.io.git
       - run:
-          name: clean tmp/hsrmy.github.io
+        # 一旦tmp/hsrmy.github.ioの中身を削除
+          name: Clean tmp/hsrmy.github.io
           command: rm -rf tmp/hsrmy.github.io/*
+      - run:
+        # publicの中身をtmp/hsrmy.github.ioの中にコピー
+          name: Copy public
+          command: cp -fr public/* tmp/hsrmy.github.io/
+      - run:
+          command: tree .
 
                 # # sourceブランチにpushされた時実行
                 # workflows:
