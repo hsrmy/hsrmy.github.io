@@ -1,33 +1,32 @@
 version: 2
 jobs:
-  deploy_job:
-    build:
-      docker:
-        - image: cibuilds/hugo:latest
-      working_directory: ~/hugo
-      steps:
-        # working_directoryにリポジトリをコピー
-        - checkout
-        - run:
-          # 環境を最新に
+  build:
+    docker:
+      - image: cibuilds/hugo:latest
+    working_directory: ~/hugo
+    steps:
+      # working_directoryにリポジトリをコピー
+      - checkout
+      - run:
+        # 環境を最新に
           name: Update enviroment
-          command: apk update && apk add git
-        - run:
-          # 作業ブランチをsourceに切り替え
+          command: apt -y update && apt -y install git
+      - run:
+        # 作業ブランチをsourceに切り替え
           name: Checkout branch
           command: git checkout source
-        - run:
+      - run:
           name: clone master into tmp
           command: mkdir -p tmp && cd tmp && git clone https://github.com/hsrmy/hsrmy.github.io.git
-        - run:
+      - run:
           command: pwd
 
-# sourceブランチにpushされた時実行
-workflows:
-  version: 2
-  deploy:
-    jobs:
-      - deploy_job:
-        filters:
-          branches:
-            only: source
+                # # sourceブランチにpushされた時実行
+                # workflows:
+                #   version: 2
+                #   deploy:
+                #     jobs:
+                #       - deploy_job:
+                #         filters:
+                #           branches:
+                #             only: source
