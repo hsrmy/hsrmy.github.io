@@ -10,7 +10,7 @@ jobs:
       - run:
         # 環境を最新に
           name: Update enviroment
-          command: apt -y update && apt -y install git
+          command: apt -y update && apt -y install git tree
       - run:
         # 作業ブランチをsourceに切り替え
           name: Checkout branch
