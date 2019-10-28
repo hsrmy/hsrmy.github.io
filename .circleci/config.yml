@@ -10,7 +10,7 @@ jobs:
       - run:
         # 環境を最新に
           name: Update enviroment
-          command: apt -y update && apt -y install git tree
+          command: apt -y update && apt -y install git
       - run:
         # 作業ブランチをsourceに切り替え
           name: Checkout branch
@@ -38,7 +38,7 @@ jobs:
       - run:
         # Gitの設定
           name: Setting git
-          command: git config --local user.name hsrmy && git config --local user.email hsrmy@emradc.xyz
+          command: git config --global user.name hsrmy && git config --global user.email hsrmy@emradc.xyz
       - run:
         # Githubに反映
           name: Deploy
