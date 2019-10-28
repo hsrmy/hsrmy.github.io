@@ -18,8 +18,10 @@ jobs:
       - run:
          command: hugo new post/test.md
       - run:
+          command: mv post/test.md content/post/test.md
+      - run:
          command: >-
-           echo '---\ntitle: "Test"\ndate: 2019-10-29T06:13:01+09:00\ndraft: false\n---\n- [x] test' > post/test.md
+           echo '---\ntitle: "Test"\ndate: 2019-10-29T06:13:01+09:00\ndraft: false\n---\n- [x] test' > content/post/test.md
       - run:
         # submoduleにしているテーマのアップデート
           name: Update theme
