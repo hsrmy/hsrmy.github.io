@@ -3,15 +3,26 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://hsrmy.github.io/post/</loc>
+    <lastmod>2019-10-29T06:13:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hsrmy.github.io/post/2019/10/10290613/</loc>
+    <lastmod>2019-10-29T06:13:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hsrmy.github.io/</loc>
+    <lastmod>2019-10-29T06:13:01+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hsrmy.github.io/tags/</loc>
   </url>
   
   <url>
     <loc>https://hsrmy.github.io/topics/</loc>
-  </url>
-  
-  <url>
-    <loc>https://hsrmy.github.io/</loc>
   </url>
   
 </urlset>
