@@ -14,7 +14,7 @@ jobs:
       - run:
         # 作業ブランチをsourceに切り替え
           name: Checkout branch
-          command: tree . && git checkout source
+          command: tree . && git checkout source && tree .
       - run:
         # submoduleにしているテーマのアップデート
           name: Update theme
