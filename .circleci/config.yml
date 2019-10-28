@@ -42,7 +42,7 @@ jobs:
       - run:
         # Githubに反映
           name: Deploy
-          command: cd tmp/hsrmy.github.io/ && git status
+          command: cd tmp/hsrmy.github.io/ && tree .
 
                 # # sourceブランチにpushされた時実行
                 # workflows:
