@@ -17,8 +17,8 @@ jobs:
           command: git checkout source
       - run:
         # submoduleにしているテーマのアップデート
-        name: Update theme
-        command: git submodule update -i
+          name: Update theme
+          command: git submodule update -i
       - run:
           # 記事の作成
           name: Create ariticle
