@@ -19,7 +19,8 @@ jobs:
           name: clone master into tmp
           command: mkdir -p tmp && cd tmp && git clone https://github.com/hsrmy/hsrmy.github.io.git
       - run:
-          command: pwd
+          name: clean tmp/hsrmy.github.io
+          command: rm -rf tmp/hsrmy.github.io/*
 
                 # # sourceブランチにpushされた時実行
                 # workflows:
