@@ -10,10 +10,10 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "91:db:bd:a8:04:a0:13:5a:2c:74:5f:a9:18:fc:82:74"
-      - run:
-        # 環境を最新に
-          name: Update enviroment
-          command: apt -y update && apt -y install git
+      # - run:
+      #   # 環境を最新に
+      #     name: Update enviroment
+      #     command: apt -y update && apt -y install git
       - run:
         # 作業ブランチをsourceに切り替え
           name: Checkout branch
@@ -45,4 +45,4 @@ jobs:
       - run:
         # Githubに反映
           name: Deploy
-          command: cd tmp/hsrmy.github.io/ && git fetch && git add . && git commit -m "publish" && git push origin master:test
+          command: cd tmp/hsrmy.github.io/ && git fetch && git add . && git commit -m "$(git diff --name-only source|grep content|sed -z 's/\n/ /g')" && git push origin master:test
