@@ -41,7 +41,7 @@ jobs:
       - run:
         # Commit
           name: Deploy
-          command: cd tmp/hsrmy.github.io/ && git fetch && git add . && git commit -m "$(git diff --name-only source|grep content|sed -z 's/\n/ /g')"
+          command: MSG=$(git diff --name-only source|grep content|sed -z 's/\n/ /g') && cd tmp/hsrmy.github.io/ && git fetch && git add . && git commit -m "Add ${MSG}"
       - run:
           name: Push
-          command: git push origin master:test
+          command: git push origin master
