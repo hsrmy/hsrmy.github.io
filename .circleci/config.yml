@@ -11,10 +11,6 @@ jobs:
           fingerprints:
             - "91:db:bd:a8:04:a0:13:5a:2c:74:5f:a9:18:fc:82:74"
       - run:
-        # 環境を最新に
-          name: Update enviroment
-          command: apt -y update && apt -y install git
-      - run:
         # 作業ブランチをsourceに切り替え
           name: Checkout branch
           command: git checkout source
