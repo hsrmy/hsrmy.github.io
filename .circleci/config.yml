@@ -43,6 +43,9 @@ jobs:
           name: Setting git
           command: git config --global user.name hsrmy && git config --global user.email hsrmy@emradc.xyz
       - run:
-        # Githubに反映
+        # Commit
           name: Deploy
-          command: cd tmp/hsrmy.github.io/ && git fetch && git add . && git commit -m "publish" && git push origin master:test
+          command: cd tmp/hsrmy.github.io/ && git fetch && git add . && git commit -m "$(git diff --name-only source|grep content|sed -z 's/\n/ /g')"
+      - run:
+          name: Push
+          command: git push origin master:test
