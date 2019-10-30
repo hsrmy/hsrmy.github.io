@@ -11,10 +11,6 @@ jobs:
           fingerprints:
             - "91:db:bd:a8:04:a0:13:5a:2c:74:5f:a9:18:fc:82:74"
       - run:
-        # 環境を最新に
-          name: Update enviroment
-          command: apt -y update && apt -y install git
-      - run:
         # 作業ブランチをsourceに切り替え
           name: Checkout branch
           command: git checkout source
@@ -43,6 +39,9 @@ jobs:
           name: Setting git
           command: git config --global user.name hsrmy && git config --global user.email hsrmy@emradc.xyz
       - run:
-        # Githubに反映
+        # Commit
           name: Deploy
-          command: cd tmp/hsrmy.github.io/ && git fetch && git add . && git commit -m "publish" && git push origin master:test
+          command: MSG=$(git diff --name-only source|grep content|sed -z 's/\n/ /g') && cd tmp/hsrmy.github.io/ && git fetch && git add . && git commit -m "Add ${MSG}"
+      - run:
+          name: Push
+          command: git push origin master
