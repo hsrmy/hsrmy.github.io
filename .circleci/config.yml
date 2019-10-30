@@ -43,12 +43,11 @@ jobs:
           # GithubにPush
             name: Deploy
             command: MSG=$(git diff --name-only source|grep content|sed -z 's/\n/ /g') && cd tmp/hsrmy.github.io/ && git fetch && git add . && git commit -m "Add ${MSG}" && git push origin master
-
 workflows:
   version: 2
-  deploy:
+  build-master:
     jobs:
       - deploy_job:
-        filters:
-          branches:
-            only: deploy
+          filters:
+            branches:
+              only: source
