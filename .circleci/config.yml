@@ -31,7 +31,7 @@ jobs:
     - run:
       # tmpフォルダにmasterブランチをclone
         name: Clone master into tmp
-        command: mkdir -p tmp && cd tmp && git clone https://hsrmy@github.com/hsrmy/hsrmy.github.io.git
+        command: mkdir -p tmp && cd tmp && git clone https://hsrmy:${GITHUB_TOKEN}@github.com/hsrmy/hsrmy.github.io.git
     - run:
       # 一旦tmp/hsrmy.github.ioの中身を削除
         name: Clean tmp/hsrmy.github.io
@@ -47,7 +47,7 @@ jobs:
     - run:
       # 環境変数のセット
         name: Set environment variables
-        command: echo 'export MSG=$(git diff --name-only source|grep content|sed -z 's/\n/ /g')' >> $BASH_ENV && echo $BASH_ENV
+        command: echo 'export MSG=$(git diff --name-only source|grep content|sed -z 's/\n/ /g')' >> $BASH_ENV && cat $BASH_ENV
     - run:
       # Commit
         name: Commit
