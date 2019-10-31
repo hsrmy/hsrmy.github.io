@@ -47,7 +47,7 @@ jobs:
     - run:
       # 環境変数のセット
         name: Set environment variables
-        command: echo 'export MSG=$(git diff --name-only source|grep content|sed -z 's/\n/ /g')' >> $BASH_ENV
+        command: echo 'export MSG=$(git diff --name-only source|grep content|sed -z 's/\n/ /g')' >> $BASH_ENV && echo $BASH_ENV
     - run:
       # Commit
         name: Commit
