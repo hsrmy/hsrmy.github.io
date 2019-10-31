@@ -15,7 +15,7 @@ jobs:
           - "91:db:bd:a8:04:a0:13:5a:2c:74:5f:a9:18:fc:82:74"
     - run:
         name: Machine login
-        command: echo "machine github.com login $GITHUB_TOKEN" > ~/.netrc
+        command: echo "machine github.com\nlogin $GITHUB_TOKEN" > ~/.netrc
     - run:
       # 作業ブランチをsourceに切り替え
         name: Checkout branch
@@ -31,7 +31,7 @@ jobs:
     - run:
       # tmpフォルダにmasterブランチをclone
         name: Clone master into tmp
-        command: mkdir -p tmp && cd tmp && git clone https://github.com/hsrmy/hsrmy.github.io.git
+        command: mkdir -p tmp && cd tmp && git clone https://hsrmy@github.com/hsrmy/hsrmy.github.io.git
     - run:
       # 一旦tmp/hsrmy.github.ioの中身を削除
         name: Clean tmp/hsrmy.github.io
